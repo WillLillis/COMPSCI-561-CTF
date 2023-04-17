@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  test-ctf:
+    container_name: Test-CTF
+    build: .
+    ports:
+      - "8080:54321"
+    #networks:
+    #  nw0:
+    command: bash start.sh
+
+#networks:
+#  nw0:
+#    external: true
