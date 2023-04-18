@@ -1,15 +1,8 @@
 #pragma once
-#if defined(_WIN32)
-	#include <cstdint>
-	#include <cstdio>
-	#include <cstdlib>
-	#include <cstring.h>
-#else
-	#include <stdint.h>
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <string.h>
-#endif 
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // fflush(stdout) has to be called with each printf call, otherwise the messages won't send properly over the network connection 
 #define printf_flush(fmt,...) printf(fmt __VA_OPT__(,) __VA_ARGS__); fflush(stdout);
