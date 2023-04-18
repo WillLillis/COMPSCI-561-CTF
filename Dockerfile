@@ -5,6 +5,7 @@ RUN apt-get update \
     net-tools \
     ncat \
     gcc \
+    gdb \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
