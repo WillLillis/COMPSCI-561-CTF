@@ -5,7 +5,6 @@ RUN apt-get update \
     net-tools \
     ncat \
     gcc \
-    #openssl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
