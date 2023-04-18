@@ -5,12 +5,13 @@ RUN apt-get update \
     net-tools \
     ncat \
     gcc \
-    openssl \
+    #openssl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /app
 COPY flag.c /app/flag.c
+COPY encrypt.h /app/encrypt.h
 COPY start.sh /app/start.sh
 COPY flag.enc /app/flag.enc
 
