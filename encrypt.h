@@ -7,6 +7,14 @@
 // fflush(stdout) has to be called with each printf call, otherwise the messages won't send properly over the network connection 
 #define printf_flush(fmt,...) printf(fmt __VA_OPT__(,) __VA_ARGS__); fflush(stdout);
 
+// make this even easier?
+void do_encrypt(const char* input, char* out, size_t input_len, int key)
+{
+	for (int i = 0; i < input_len; i++) {
+		out[i] = input[i] + key;
+	}
+}
+
 char* encrypt(const char* input, uint8_t key)
 {
 	if (key == 0) {
@@ -24,9 +32,10 @@ char* encrypt(const char* input, uint8_t key)
 
 	memset(out, '\0', input_len + 1);
 
-	for (int i = 0; i < input_len; i++) {
+	do_encrypt(input, out, input_len, key);
+	/*for (int i = 0; i < input_len; i++) {
 		out[i] = input[i] + key;
-	}
+	}*/
 
 	return out;
 }
