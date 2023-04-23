@@ -1,10 +1,26 @@
 #include "encrypt.h"
+#include "base64.h"
 
-#define MAX_PASSCODE_LEN 64
+#define MAX_PASSCODE_LEN 32
 
-// thisistheflag!
-// ymnxnxymjkqfl&
+// thisistheflag00
+// dGhpc2lzdGhlZmxhZzAw
+// eHiqd3m{eHim[nyi[{Bx
 
+// sample solution for decrypt.c
+/*const char* key_buff = "8f14e45fceea167a5a36dedd4bea2543";
+size_t len = strlen(user_in);
+for (int i = 0; i < len; i++){
+	user_in[i] = user_in[i] - 1;
+}
+
+printf("Decrypted string: %s\n", user_in);
+
+size_t size_out;
+char* decoded = base64_decode(user_in, len, &size_out);
+if (decoded == NULL) printf("Base64 decode error!\n");*/
+
+// use command line args instead of fgets?
 int main()
 {
 	fflush(stdin);

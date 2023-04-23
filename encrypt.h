@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "base64.h"
 
 // fflush(stdout) has to be called with each printf call, otherwise the messages won't send properly over the network connection 
 #define printf_flush(fmt,...) printf(fmt __VA_OPT__(,) __VA_ARGS__); fflush(stdout);
@@ -18,26 +19,28 @@ void do_encrypt(const char* input, char* out, size_t input_len, int key)
 
 char* encrypt(const char* input, uint8_t key)
 {
-	const char* hint_buff = "Value of 0 passed for argument 'key'. Using default key value 7!\n";
+	const char* hint_buff1 = "Value of 0 passed for argument 'key'. Using default key value 1!\n";
+	const char* hint_buff2 = "Reminder: The encryption alg first encodes the string using base64 encoding, then adds 1 to each character in turn.";
+	//const char* key_buff;
 	if (key == 0) {
-		//printf_flush("Value of 0 passed for argument 'key'. Using default key value 7!\n");
-		key = 7;
+		printf_flush("Value of 0 passed for argument 'key'. Using default key value 1!\n");
+		key = 1;
+		//key_buff = "8f14e45fceea167a5a36dedd4bea2543";
+	} 
+	
+	printf("Input: %s\n", input);
+	
+	size_t size_out;
+	char* encoded_data = base64_encode(input, strlen(input), &size_out);
+	
+	printf("Encoded: %s\n", encoded_data);
+
+	size_t len = strlen(encoded_data);
+	for (int i = 0; i < len; i++) {
+		encoded_data[i] += key;
 	}
 
-	size_t input_len = strlen(input);
+	printf("Encrypted: %s\n", encoded_data);
 
-	char* out = (char*)malloc(input_len + 1); // + 1 for null terminator
-	if (out == NULL) {
-		printf_flush("Memory allocation failure! Requested %zu bytes.\n", strlen(input) + 1);
-		return NULL;
-	}
-
-	memset(out, '\0', input_len + 1);
-
-	do_encrypt(input, out, input_len, key);
-	/*for (int i = 0; i < input_len; i++) {
-		out[i] = input[i] + key;
-	}*/
-
-	return out;
+	return encoded_data;
 }
