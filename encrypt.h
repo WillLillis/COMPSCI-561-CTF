@@ -18,9 +18,10 @@ void do_encrypt(const char* input, char* out, size_t input_len, int key)
 
 char* encrypt(const char* input, uint8_t key)
 {
+	const char* hint_buff = "Value of 0 passed for argument 'key'. Using default key value 7!\n";
 	if (key == 0) {
-		printf_flush("Value of 0 passed for argument 'key'. Using default key value 42!\n");
-		key = 42;
+		//printf_flush("Value of 0 passed for argument 'key'. Using default key value 7!\n");
+		key = 7;
 	}
 
 	size_t input_len = strlen(input);

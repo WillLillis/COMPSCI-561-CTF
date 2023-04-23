@@ -2,6 +2,9 @@
 
 #define MAX_PASSCODE_LEN 64
 
+// thisistheflag!
+// ymnxnxymjkqfl&
+
 int main()
 {
 	fflush(stdin);

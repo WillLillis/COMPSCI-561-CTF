@@ -3,7 +3,6 @@ FROM ubuntu:latest
 RUN apt-get update \
     && apt-get install -y \
     openssh-server \
-    #net-tools \
     ncat \
     gcc \
     gdb \
@@ -14,13 +13,13 @@ RUN apt-get update \
 
 # thanks for the help John!!!
 RUN adduser --disabled-password --gecos "" labuser && echo 'labuser:labuser' | chpasswd
-RUN mkdir /app
-COPY flag.c /app/flag.c
-COPY encrypt.h /app/encrypt.h
-COPY decrypt.c /app/decrypt.c
-COPY start.sh /app/start.sh
-COPY flag.enc /app/flag.enc
+COPY flag.c /home/labuser/flag.c
+COPY encrypt.h /home/labuser/encrypt.h
+COPY decrypt.c /home/labuser/decrypt.c
+RUN chmod 777 /home/labuser/decrypt.c
+COPY start.sh /home/labuser/start.sh
+COPY flag.enc /home/labuser/flag.enc
 
-WORKDIR /app
+WORKDIR /home/labuser
 
 ENTRYPOINT bash start.sh && service ssh start && tail -f /dev/null
