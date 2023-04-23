@@ -8,6 +8,7 @@
 #define printf_flush(fmt,...) printf(fmt __VA_OPT__(,) __VA_ARGS__); fflush(stdout);
 
 // make this even easier?
+// unroll the loop and make it a constant number of characters?
 void do_encrypt(const char* input, char* out, size_t input_len, int key)
 {
 	for (int i = 0; i < input_len; i++) {

@@ -2,7 +2,8 @@ FROM ubuntu:latest
 
 RUN apt-get update \
     && apt-get install -y \
-    net-tools \
+    openssh-server \
+    #net-tools \
     ncat \
     gcc \
     gdb \
@@ -11,6 +12,8 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# thanks for the help John!!!
+RUN adduser --disabled-password --gecos "" labuser && echo 'labuser:labuser' | chpasswd
 RUN mkdir /app
 COPY flag.c /app/flag.c
 COPY encrypt.h /app/encrypt.h
@@ -19,3 +22,5 @@ COPY start.sh /app/start.sh
 COPY flag.enc /app/flag.enc
 
 WORKDIR /app
+
+ENTRYPOINT bash start.sh && service ssh start && tail -f /dev/null
