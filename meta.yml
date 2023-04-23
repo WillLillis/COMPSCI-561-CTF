@@ -1,37 +1,10 @@
 name: Test-CTF
 description: |
-  This is a simple challenge that is intended to familiarize you with the connection process, as well as giving you some free points (Which you can use to access hints later).
-
-  **Connection Instructions**:
-  
-  Due to administrative and security reasons, a whole bunch of ports cannot be opened on swarm. So you connect to the SSH jump server on swarm with local port forwarding enabled. This allows you to forward a port from the client machine to the server machine, and hence connect to services which are hosted on the internal network. Exposing one SSH container to the Internet as a somewhat proxy server for other internal services is very commoly used, and the SSH server is known as the jump server or SSH Bastion.
-  
-  Do the following:
-
-  $ `ssh -L localhost:<local port>:misc-free-points:54321 -p 56151 <username>@cs561.cs.umass.edu`
-
-  This starts an SSH session with the SSH server on swarm machine, and this server is connected to the internal network.
-  Now you can open a new terminal window on your machine, and connect to `localhost:<local port>` to access the challenge
-  
-  For example, run
-
-  $ `ssh -L localhost:5555:misc-free-points:54321 -p 56151 user@cs561.cs.umass.edu`
-
-  This will forward the local port 5555 on your machine to `misc-free-points:54321` on the swarm network, where this challenge is hosted. The SSH server has been configured to give very restricted shell access (change your password and add an SSH key to ~/.ssh/authorized_keys), but can be used as a tunnel. You can read more about the SSH client by running `man ssh`
-  
-  Now, do
-
-  $ `nc localhost 5555`
-
-  This should print the flag on console if you have followed all steps correctly.
-
-  **Note**:
-
-  It is recommended that you change your password on the first login (but keep a copy of the original password!). Easier still is to add your SSH key using the add-ssh-key command to enable passwordless login. Also try to create a config in your machine's ~/.ssh/config so you do not have to enter the username, port number and host every time you login.
+  This is a CTF aimed mainly at some basic reverse engineering.
 
 value: 100
 category: Miscellaneous
-flag: thisistheflag
+flag: thisistheflag!
 
 # administrative
 container_name: Test-CTF
