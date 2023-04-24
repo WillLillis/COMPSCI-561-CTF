@@ -4,11 +4,11 @@ services:
     container_name: Test-CTF
     build: .
     ports:
-      - "8080:54321"
       - '22:22'
     networks:
-      compsci-561-ctf_default:
+      compsci-561-ctf_default: # Not sure what this will be on swarm
 
+# not sure about this either
 networks:
   compsci-561-ctf_default:
     external: true

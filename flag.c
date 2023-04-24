@@ -3,24 +3,20 @@
 
 #define MAX_PASSCODE_LEN 32
 
-// thisistheflag00
-// dGhpc2lzdGhlZmxhZzAw
-// eHiqd3m{eHim[nyi[{Bx
+// Flag:		   thisistheflag00
+// Encrypted Flag: TA5YRwxHQQ4GAwkAVgYH
 
-// sample solution for decrypt.c
-/*const char* key_buff = "8f14e45fceea167a5a36dedd4bea2543";
-size_t len = strlen(user_in);
-for (int i = 0; i < len; i++){
-	user_in[i] = user_in[i] - 1;
-}
+// sample solution to insert at the bottom of decrypt.c
+//size_t size_out;
+//char* decoded = base64_decode(user_in, strlen(user_in), &size_out);
+//
+//const char* key_buff = "8f14e45fceea167a5a36dedd4bea2543";
+//for (int i = 0; i < size_out; i++) {
+//	decoded[i] ^= key_buff[i];
+//}
+//
+//printf("decrypted: %s\n", decoded);
 
-printf("Decrypted string: %s\n", user_in);
-
-size_t size_out;
-char* decoded = base64_decode(user_in, len, &size_out);
-if (decoded == NULL) printf("Base64 decode error!\n");*/
-
-// use command line args instead of fgets?
 int main()
 {
 	fflush(stdin);
@@ -36,7 +32,7 @@ int main()
 	if ((encrypted = encrypt(user_in, 0)) == NULL) {
 		printf_flush("Error returned from encryption function!\n");
 	} else {
-		printf_flush("Encrypted flag: %s\n", encrypted);
+		printf_flush("Encrypted: %s\n", encrypted);
 	}
 
 	return 0;

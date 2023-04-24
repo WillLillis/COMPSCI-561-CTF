@@ -1,10 +1,10 @@
 name: Test-CTF
 description: |
-  This is a CTF aimed mainly at some basic reverse engineering.
+  This is a CTF aimed mainly at some basic reverse engineering/ binary inspection.
 
 value: 100
 category: Miscellaneous
-flag: thisistheflag!
+flag: thisistheflag00
 
 # administrative
 container_name: Test-CTF

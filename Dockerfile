@@ -7,6 +7,7 @@ RUN apt-get update \
     gdb \
     nano \
     vim \
+    emacs \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
