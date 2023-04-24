@@ -35,5 +35,7 @@ int main()
 		printf_flush("Encrypted: %s\n", encrypted);
 	}
 
+	free(encrypted);
+
 	return 0;
 }

@@ -82,10 +82,14 @@ char* encrypt(const char* input, uint8_t key)
 		input_tmp[i] ^= key_buff[i];
 	}
 
+	free(key_buff);
+
 	//printf("Encrypted: %s\n", input_tmp);
 
 	size_t size_out;
 	char* encoded_data = base64_encode(input_tmp, len, &size_out);
+
+	free(input_tmp);
 
 	//printf("Encoded: %s\n", encoded_data);
 
