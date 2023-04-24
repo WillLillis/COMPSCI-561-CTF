@@ -20,7 +20,7 @@ The encrypted flag (as given in ``flag.enc``) is "TA5YRwxHQQ4GAwkAVgYH". The dec
 
 	- "HINT1: The encryption algorithm works by performing a bitwise XOR, character by character, with the key buffer. The result of this is then encoded using base64 encoding."
 
-	- "HINT2: Value of 0 passed for argument 'key'. Using default key value MD5(7) to construct key buffer";
+	- "HINT2: Value of 0 passed for argument 'key'. Using default key value MD5(7) to construct key buffer"
 
 - With these hints, the user can then figure out the encryption algorithm and deduce that MD5 hash of 7, "8f14e45fceea167a5a36dedd4bea2543", was used as the key buffer.
 
