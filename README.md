@@ -34,4 +34,6 @@ const char* key_buff = "8f14e45fceea167a5a36dedd4bea2543"; // MD5(7)
 for (int i = 0; i < size_out; i++) {
 	decoded[i] ^= key_buff[i];
 }
+
+printf("decrypted: %s\n", decoded);
 ```
