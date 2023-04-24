@@ -18,8 +18,7 @@ The encrypted flag (as given in ``flag.enc``) is "TA5YRwxHQQ4GAwkAVgYH". The dec
 
 - The user runs ``strings flag`` and discovers two hints left in the program binary. These hints are:
 
-	- "HINT1: The encryption algorithm works by performing a bitwise XOR,"
-	"character by character, with the key buffer. The result of this is then encoded using base64 encoding."
+	- "HINT1: The encryption algorithm works by performing a bitwise XOR, character by character, with the key buffer. The result of this is then encoded using base64 encoding."
 
 	- "HINT2: Value of 0 passed for argument 'key'. Using default key value MD5(7) to construct key buffer";
 
