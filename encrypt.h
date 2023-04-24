@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <openssl/md5.h>
 #include <openssl/evp.h>
 #include <unistd.h>
 #include "base64.h"
@@ -11,15 +10,6 @@
 // fflush(stdout) has to be called with each printf call, otherwise the messages won't send properly over the network connection 
 // at least while using netcat, ssh seems to be fine with normal printf calls
 #define printf_flush(fmt,...) printf(fmt __VA_OPT__(,) __VA_ARGS__); fflush(stdout);
-
-// make this even easier?
-// unroll the loop and make it a constant number of characters?
-void do_encrypt(const char* input, char* out, size_t input_len, int key)
-{
-	for (int i = 0; i < input_len; i++) {
-		out[i] = input[i] + key;
-	}
-}
 
 char* encrypt(const char* input, uint8_t key)
 {
@@ -81,7 +71,7 @@ char* encrypt(const char* input, uint8_t key)
 	} else {
 		printf("Non-zero key value entered, using key value %d to compute key_buff.\n", key);
 
-		EVP_DigestUpdate(mdctx, (char*) & key, sizeof(tmp_key));
+		EVP_DigestUpdate(mdctx, (char*)&key, sizeof(key));
 
 		// this MD5 calculation gives different results from the online calculators... 
 		// doesn't matter for the sake of the CTF, but I'm not sure why
