@@ -14,8 +14,8 @@
 char* encrypt(const char* input, uint8_t key)
 {
 	const char* hint_buff1 = "HINT1: The encryption algorithm works by performing a bitwise XOR,"
-	"character by character, with the key buffer. (For example, encrypted[i] = plaintext[i] ^ keybuffer[i]) The result of this is then encoded using base64 encoding.";
-	const char* hint_buff2 = "HINT2: Value of 0 passed for argument 'key'. Using default key value MD5(7) to consturct key buffer";
+	"character by character, with the key buffer. The result of this is then encoded using base64 encoding.";
+	const char* hint_buff2 = "HINT2: Value of 0 passed for argument 'key'. Using default key value MD5(7) to construct key buffer";
 	//const char* key_buff = "8f14e45fceea167a5a36dedd4bea2543";
 	// have to do this so the MD5 hash doesn't show up when the user runs strings on the binary
 	// don't want to make things too easy
@@ -69,7 +69,7 @@ char* encrypt(const char* input, uint8_t key)
 		key_buff[31] = '3';
 		key_buff[32] = '\0';
 	} else {
-		printf("Non-zero key value entered, using key value %d to compute key_buff.\n", key);
+		//printf("Non-zero key value entered, using key value %d to compute key_buff.\n", key);
 
 		EVP_DigestUpdate(mdctx, (char*)&key, sizeof(key));
 
