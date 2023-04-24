@@ -4,6 +4,7 @@ RUN apt-get update \
     && apt-get install -y \
     openssh-server \
     gcc \
+    libssl-dev \
     gdb \
     nano \
     vim \

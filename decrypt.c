@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "base64.h"
 
 #define MAX_PASSCODE_LEN 32
 
