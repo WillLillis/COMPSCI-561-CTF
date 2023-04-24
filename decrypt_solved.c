@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "base64.h"
 
 #define MAX_PASSCODE_LEN 32
 
@@ -21,6 +22,16 @@ int main()
 	}
 
 	printf("Inputted string: %s\n", user_in);
+
+	size_t size_out;
+	char* decoded = base64_decode(user_in, strlen(user_in), &size_out);
+	
+	const char* key_buff = "8f14e45fceea167a5a36dedd4bea2543"; // MD5(7)
+	for (int i = 0; i < size_out; i++) {
+		decoded[i] ^= key_buff[i];
+	}
+
+	printf("decrypted: %s\n", decoded);
 
 	return 0;
 }

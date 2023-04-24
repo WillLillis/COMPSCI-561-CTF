@@ -15,6 +15,7 @@ char* encrypt(const char* input, uint8_t key)
 {
 	const char* hint_buff1 = "HINT1: The encryption algorithm works by performing a bitwise XOR,"
 	"character by character, with the key buffer. (For example, encrypted[i] = plaintext[i] ^ keybuffer[i]) The result of this is then encoded using base64 encoding.";
+	const char* hint_buff2 = "HINT2: Value of 0 passed for argument 'key'. Using default key value MD5(7) to consturct key buffer";
 	//const char* key_buff = "8f14e45fceea167a5a36dedd4bea2543";
 	// have to do this so the MD5 hash doesn't show up when the user runs strings on the binary
 	// don't want to make things too easy
@@ -23,12 +24,11 @@ char* encrypt(const char* input, uint8_t key)
 	EVP_MD_CTX* mdctx;
 	unsigned char* md5_digest;
 	unsigned int md5_digest_len = EVP_MD_size(EVP_md5());
-	printf("digest len: %u\n", md5_digest_len);
 	mdctx = EVP_MD_CTX_new();
 	EVP_DigestInit_ex(mdctx, EVP_md5(), NULL);
 
 	if (key == 0) {
-		printf("HINT2: Value of 0 passed for argument 'key'. Using default key value MD5(7) to consturct key buffer\n");
+		//printf("Value of 0 passed for argument 'key'. Using default key value MD5(7) to consturct key buffer\n");
 		key_buff = (char*)malloc(32 + 1);
 		if (key_buff == NULL) {
 			printf("Allocation error!\n");
